@@ -1,0 +1,31 @@
+# Dependências e caches
+node_modules/
+.npm/
+.cache/
+*.log
+
+# Configuração, tokens, senhas e credenciais (nunca enviar)
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.token
+*credentials*
+*secret*
+login.txt
+
+# Sessão do WhatsApp e dados dos clientes
+auth/
+data/
+
+# Backups e temporários
+*.bak
+*.backup
+*.old
+*.swp
+*~
+*-backup-*/
+
+# Sistema
+.DS_Store

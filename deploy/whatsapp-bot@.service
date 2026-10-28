@@ -1,0 +1,19 @@
+# Um serviço por cliente: systemctl --user enable --now whatsapp-bot@<pasta-do-cliente>
+[Unit]
+Description=Robô de WhatsApp (%i)
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/whatsapp-bot-clientes/%i
+# Ajuste o caminho do node (veja `which node`) e o da pasta do robô, se não for ~/whatsapp-bot
+ExecStart=/usr/bin/node %h/whatsapp-bot/src/index.js
+Restart=on-failure
+RestartSec=10
+# 3 = precisa de ação humana (escanear o QR de novo ou criar a etiqueta): não adianta reiniciar
+RestartPreventExitStatus=3
+UMask=0077
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=default.target
